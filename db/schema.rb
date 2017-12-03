@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203074327) do
+ActiveRecord::Schema.define(version: 20171203083109) do
 
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name", limit: 50, null: false
-    t.string "lastname", limit: 50, null: false
+    t.string "name", limit: 50
+    t.string "lastname", limit: 50
     t.string "email", limit: 50
-    t.string "legajo", limit: 30
+    t.string "legajo", limit: 10
     t.string "doc", limit: 30
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
