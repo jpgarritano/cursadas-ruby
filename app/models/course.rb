@@ -2,6 +2,6 @@ class Course < ApplicationRecord
 	has_many :tests
 
 	def to_s
-		year
+		year.to_s
 	end
 end

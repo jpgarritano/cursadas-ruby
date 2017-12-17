@@ -12,7 +12,7 @@
 
   <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Gestor de notas</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <%=  link_to "Home", root_path , class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <%= link_to "Cursadas", { controller: 'courses', action: 'index' }, class: 'nav-link' %>
@@ -29,7 +29,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuración</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <%= link_to "Evaluaciones", { controller: 'tests', action: 'index' }, class: 'dropdown-item' %>
+              <%#= link_to "Evaluaciones", { controller: 'tests', action: 'index' }, class: 'dropdown-item' %>
               <%= link_to "Estudiantes", { controller: 'students', action: 'index' }, class: 'dropdown-item' %>
               <%= link_to "Cursadas", { controller: 'courses', action: 'index' }, class: 'dropdown-item' %>
                <%= link_to "Notas", { controller: 'grades', action: 'index' }, class: 'dropdown-item' %>
@@ -45,7 +45,7 @@
 
     <main role="main" class="container">
       <div class="starter-template">
-    <%= yield %>
+        <%= yield %>
       </div>
      </main><!-- /.container -->
   </body>

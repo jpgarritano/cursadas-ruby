@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tests</h1>
+<h1>Evaluaciones de cursada <%= @curso %></h1>
 
 <table class="table">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Minimum grade</th>
-      <th>Course</th>
-      <th colspan="3"></th>
+      <th>Descripción</th>
+      <th>Fecha</th>
+      <th>Nota Mínima</th>
+      <th>Cursada</th>
+      <th colspan="3">Operaciones</th>
     </tr>
   </thead>
 
@@ -20,9 +20,9 @@
         <td><%= test.date %></td>
         <td><%= test.minimum_grade %></td>
         <td><%= test.course %></td>
-        <td><%= link_to 'Show', test %></td>
-        <td><%= link_to 'Edit', edit_test_path(test) %></td>
-        <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', [test.course, test] %></td>
+        <td><%= link_to 'Editar', edit_course_test_path(test.course,test) %></td>
+        <td><%= link_to 'Borrar', [test.course,test], method: :delete, data: { confirm: '¿Estás seguro de borrar la evaluación?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'Nuevo Evaluación', new_test_path,  class: "btn btn-primary"%>
+<%= link_to 'Nueva Evaluación', new_course_test_path,  class: "btn btn-primary"%>

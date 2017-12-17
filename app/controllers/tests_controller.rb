@@ -4,7 +4,9 @@ class TestsController < ApplicationController
   # GET /tests
   # GET /tests.json
   def index
-    @tests = Test.all
+    #@tests = Test.all
+    @curso = Course.find(params[:course_id])
+    @tests = @curso.tests.order('date')
   end
 
   # GET /tests/1
@@ -14,7 +16,8 @@ class TestsController < ApplicationController
 
   # GET /tests/new
   def new
-    @test = Test.new
+    @test = Test.new(course_id: params[:course_id])
+    #@test.course = Course.find()
   end
 
   # GET /tests/1/edit
@@ -28,7 +31,7 @@ class TestsController < ApplicationController
 
     respond_to do |format|
       if @test.save
-        format.html { redirect_to @test, notice: 'Test was successfully created.' }
+        format.html { redirect_to @test.course, notice: 'Test was successfully created.' }
         format.json { render :show, status: :created, location: @test }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class TestsController < ApplicationController
   def update
     respond_to do |format|
       if @test.update(test_params)
-        format.html { redirect_to @test, notice: 'Test was successfully updated.' }
+        format.html { redirect_to @test.course, notice: 'Test was successfully updated.' }
         format.json { render :show, status: :ok, location: @test }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class TestsController < ApplicationController
   def destroy
     @test.destroy
     respond_to do |format|
-      format.html { redirect_to tests_url, notice: 'Test was successfully destroyed.' }
+      format.html { redirect_to course_tests_url, notice: 'Test was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
