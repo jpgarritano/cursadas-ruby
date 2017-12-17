@@ -6,6 +6,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'starter-template', media: 'all' %>
+    
   </head>
 
   <body>
@@ -21,17 +23,16 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Cursadas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <%= link_to "Cursadas", { controller: 'courses', action: 'index' }, class: 'nav-link' %>
+            <!--a class="nav-link" href="#">Cursadas</a-->
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuración</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Evaluaciones</a>
+              <%= link_to "Evaluaciones", { controller: 'tests', action: 'index' }, class: 'dropdown-item' %>
               <%= link_to "Estudiantes", { controller: 'students', action: 'index' }, class: 'dropdown-item' %>
-              <a class="dropdown-item" href="#">Notas</a>
+              <%= link_to "Cursadas", { controller: 'courses', action: 'index' }, class: 'dropdown-item' %>
+               <%= link_to "Notas", { controller: 'grades', action: 'index' }, class: 'dropdown-item' %>
             </div>
           </li>
         </ul>
@@ -43,9 +44,9 @@
     </nav>
 
     <main role="main" class="container">
-
+      <div class="starter-template">
     <%= yield %>
-
+      </div>
      </main><!-- /.container -->
   </body>
 </html>

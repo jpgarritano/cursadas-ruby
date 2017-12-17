@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @test.title %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @test.date %>
+</p>
+
+<p>
+  <strong>Minimum grade:</strong>
+  <%= @test.minimum_grade %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @test.course %>
+</p>
+
+<%= link_to 'Edit', edit_test_path(@test) %> |
+<%= link_to 'Back', tests_path %>
