@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203083109) do
+ActiveRecord::Schema.define(version: 20171217053214) do
+
+  create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "grades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.float "grade", limit: 24
+    t.bigint "student_id"
+    t.bigint "test_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_grades_on_student_id"
+    t.index ["test_id"], name: "index_grades_on_test_id"
+  end
 
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", limit: 50
@@ -22,4 +38,17 @@ ActiveRecord::Schema.define(version: 20171203083109) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.date "date"
+    t.float "minimum_grade", limit: 24
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_tests_on_course_id"
+  end
+
+  add_foreign_key "grades", "students"
+  add_foreign_key "grades", "tests"
+  add_foreign_key "tests", "courses"
 end
