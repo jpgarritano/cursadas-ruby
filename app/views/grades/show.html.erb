@@ -15,5 +15,5 @@
   <%= @grade.test %>
 </p>
 
-<%= link_to 'Edit', edit_grade_path(@grade) %> |
-<%= link_to 'Back', grades_path %>
+<%= link_to 'Edit', edit_course_test_grade_path(@grade.test.course,@grade.test,@grade) %> |
+<%= link_to 'Back', course_test_grades_path %>

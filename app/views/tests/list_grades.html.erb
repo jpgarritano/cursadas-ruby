@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Notas de <%= @test %></h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Estudiante</th>
+      <th>Nota</th>
+      <th>Resultado</th>
+      <th colspan="3">Operaciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @test.grades.each do |grade| %>
+      <tr>
+        <td><%= grade.student %></td>
+        <td><%= grade.grade %></td>
+        <td><%#= grade.grade_result %></td>
+        <td><%= link_to 'Ver', course_test_grade_path(grade.test, grade) %></td>
+        <td><%= link_to 'Editar', edit_course_test_path(grade.test,grade) %></td>
+        <td><%= link_to 'Borrar', course_test_grade_path(grade.test,grade), method: :delete, data: { confirm: '¿Estás seguro de borrar la evaluación?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva Evaluación', new_course_test_grade_path(@test.course,@test),  class: "btn btn-primary"%>

@@ -1,7 +1,6 @@
 class Student < ApplicationRecord
-	#has_many :enrolments
-	#has_many :courses, through: :enrolments
 	has_and_belongs_to_many :courses
+	#accepts_nested_attributes_for :courses
 
 	validates :name, presence: true, length: {in: 1..50 }
 	validates :lastname, presence: true, length: {in: 1..50 }
@@ -11,7 +10,7 @@ class Student < ApplicationRecord
 
 
 	def to_s
-    	"#{name} #{lastname} [#{legajo}]"
+    	"#{name} #{lastname} (#{legajo})".titleize
 	end
 
 end

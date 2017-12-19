@@ -19,6 +19,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+    @courses = @student.courses
   end
 
   # GET /students/1/edit
@@ -30,6 +31,8 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
 
+    #@student.courses << set_courses_to_student(params[:student][:course_ids])
+    
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
@@ -73,6 +76,15 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :lastname, :email, :legajo, :doc)
+      params.require(:student).permit(:name, :lastname, :email, :legajo, :doc, :course_ids => [])
+    end
+
+    def set_courses_to_student courses
+        #esta demas!
+        r = []
+        courses.each do |c|
+          r << Course.find(c) unless c.blank?
+        end
+        r
     end
 end

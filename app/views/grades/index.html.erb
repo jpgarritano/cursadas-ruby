@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Grades</h1>
+<h1>Notas</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Grade</th>
-      <th>Student</th>
-      <th>Test</th>
+      <th>Nota</th>
+      <th>Estudiante</th>
+      <th>Evaluación</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +18,9 @@
         <td><%= grade.grade %></td>
         <td><%= grade.student %></td>
         <td><%= grade.test %></td>
-        <td><%= link_to 'Show', grade %></td>
-        <td><%= link_to 'Edit', edit_grade_path(grade) %></td>
-        <td><%= link_to 'Destroy', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', course_test_grade_path(grade.test.course,grade.test, grade) %></td>
+        <td><%= link_to 'Editar', edit_course_test_grade_path(grade.test.course, grade.test,grade) %></td>
+        <td><%= link_to 'Borrar',  course_test_grade_path(grade.test.course,grade.test, grade), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Grade', new_grade_path %>
+<%= link_to 'New Grade', new_course_test_grade_path , class: 'btn btn-primary' %>

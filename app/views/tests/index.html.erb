@@ -8,8 +8,7 @@
       <th>Descripción</th>
       <th>Fecha</th>
       <th>Nota Mínima</th>
-      <th>Cursada</th>
-      <th colspan="3">Operaciones</th>
+      <th colspan="4">Operaciones</th>
     </tr>
   </thead>
 
@@ -17,10 +16,10 @@
     <% @tests.each do |test| %>
       <tr>
         <td><%= test.title %></td>
-        <td><%= test.date %></td>
+        <td><%= test.date.strftime("%d/%m/%Y") %></td>
         <td><%= test.minimum_grade %></td>
-        <td><%= test.course %></td>
-        <td><%= link_to 'Ver', [test.course, test] %></td>
+        <td><%= link_to 'Notas', course_test_grades_path(test.course,test) %></td>
+        <!--td><%= link_to 'Ver', [test.course, test] %></td-->
         <td><%= link_to 'Editar', edit_course_test_path(test.course,test) %></td>
         <td><%= link_to 'Borrar', [test.course,test], method: :delete, data: { confirm: '¿Estás seguro de borrar la evaluación?' } %></td>
       </tr>
