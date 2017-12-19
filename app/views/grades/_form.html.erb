@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :grade %>
-    <%= f.association :student %>
+    <%= f.association :student, collection: @students %>
     <%= f.association :test %>
   </div>
 

@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Año</th>
-      <th colspan="3"></th>
+      <th colspan="5">Operaciones</th>
     </tr>
   </thead>
 
@@ -18,7 +18,7 @@
         <td><%= link_to 'Editar', edit_course_path(course) %></td>
         <td><%= link_to 'Borrar', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Evaluaciones', course_tests_path(course), method: :get %></td>
-        <td><%= link_to 'Inscripciones', students_path(course), method: :get %></td>
+        <td><%= link_to 'Inscripciones', students_path, method: :get %></td>
 
       </tr>
     <% end %>

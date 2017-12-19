@@ -16,6 +16,7 @@ class GradesController < ApplicationController
   # GET /grades/new
   def new
     @grade = Grade.new(test_id: params[:test_id])
+    @students = @grade.test.course.students
   end
 
   # GET /grades/1/edit
