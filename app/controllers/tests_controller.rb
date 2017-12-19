@@ -31,7 +31,7 @@ class TestsController < ApplicationController
 
     respond_to do |format|
       if @test.save
-        format.html { redirect_to @test.course, notice: 'Test was successfully created.' }
+        format.html { redirect_to course_tests_url(@test.course), notice: 'Evaluación creada correctamente.' }
         format.json { render :show, status: :created, location: @test }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class TestsController < ApplicationController
   def update
     respond_to do |format|
       if @test.update(test_params)
-        format.html { redirect_to @test.course, notice: 'Test was successfully updated.' }
+        format.html { redirect_to course_tests_url(@test.course), notice: 'Evaluación actualizada correctamente.' }
         format.json { render :show, status: :ok, location: @test }
       else
         format.html { render :edit }

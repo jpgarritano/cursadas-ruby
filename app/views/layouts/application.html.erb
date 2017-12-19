@@ -29,10 +29,9 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuración</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <%#= link_to "Evaluaciones", { controller: 'tests', action: 'index' }, class: 'dropdown-item' %>
-              <%= link_to "Estudiantes", { controller: 'students', action: 'index' }, class: 'dropdown-item' %>
-              <%= link_to "Cursadas", { controller: 'courses', action: 'index' }, class: 'dropdown-item' %>
-               <%= link_to "Notas", { controller: 'grades', action: 'index' }, class: 'dropdown-item' %>
+              <%#= link_to "Estudiantes", students_path, class: 'dropdown-item' %>
+              <%= link_to "Cursadas", courses_path, class: 'dropdown-item' %>
+               <%= link_to "Notas", grades_path, class: 'dropdown-item' %>
             </div>
           </li>
         </ul>
