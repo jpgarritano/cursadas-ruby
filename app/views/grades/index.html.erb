@@ -3,6 +3,18 @@
 <h1>Notas "<%= @test %>"</h1>
 <% if (@grades.length > 0) %>
 
+<div class="row">
+  <div class="col">
+    <h4><%= @test.approvedPercentage %>% Aprobados <span class="badge badge-success"><%= @test.approvedAmount %></span></h4>
+  </div>
+  <div class="col">
+    <h4>Desaprobados <span class="badge badge-danger"><%= @test.disapprovedAmount %></span></h4>
+  </div>
+  <div class="col">
+    <h4>Ausentes <span class="badge badge-secondary"><%= @test.absentAmount %></span></h4>
+  </div>
+</div>
+<div class="row">
 <table class="table">
   <thead>
     <tr>
@@ -17,10 +29,12 @@
       <tr>
         <td><%= grade.grade %></td>
         <td>
-          <% if (grade.grade >= grade.test.minimum_grade) %>
+          <% if (grade.approved?) %>
             <span class="text-success">Aprobado</span>
-          <% else %>
-            <span class="text-danger">Desaprobado</span>
+          <% elsif (grade.absent?) %>
+           <span class="text-secondary">Ausente</span>
+           <% else %> 
+           <span class="text-danger">Desaprobado</span>
           <% end %>
         </td>
         <td><%= grade.student %></td>
@@ -31,10 +45,11 @@
     <% end %>
   </tbody>
 </table>
+
+</div>
 <% else %>
 <h3> No hay notas cargadas</h3>
 <% end %>
-
 <br>
 
 <%= link_to 'Cargar Nota', new_course_test_grade_path , class: 'btn btn-primary' %>

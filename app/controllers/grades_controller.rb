@@ -6,6 +6,7 @@ class GradesController < ApplicationController
   def index
     @test = Test.find(params[:test_id])
     @grades = @test.grades
+    
   end
 
   # GET /grades/1
@@ -21,6 +22,7 @@ class GradesController < ApplicationController
 
   # GET /grades/1/edit
   def edit
+    @students = @grade.test.course.students
   end
 
   # POST /grades
