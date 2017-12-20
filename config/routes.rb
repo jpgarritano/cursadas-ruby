@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
   #resources :grades
   resources :courses do
    resources :students, only: [:index]

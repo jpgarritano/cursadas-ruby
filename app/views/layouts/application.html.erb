@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to "Cursadas", { controller: 'courses', action: 'index' }, class: 'nav-link' %>
+            <%= link_to "Cursadas", courses_path, class: 'nav-link' %>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuración</a>
@@ -30,7 +30,25 @@
               <%#= link_to "Notas", grades_path, class: 'dropdown-item' %>
             </div>
           </li>
+          
+          <li class="nav-item dropdown">
+            <% if user_signed_in? %>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuario</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <%= link_to 'Perfil', edit_user_registration_path, :class => 'dropdown-item' %>
+              <%= link_to "Salir", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
+            </div>
+          <% else %>
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuario</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <%= link_to "Sign up", new_user_registration_path, :class => 'dropdown-item'  %>
+            <%= link_to "Login", new_user_session_path, :class => 'dropdown-item'  %>
+          <% end %>
+          </li>
         </ul>
+        <% if user_signed_in? %>
+            <span class="text-primary"><%= current_user.email %></span>
+        <% end %>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -40,6 +58,7 @@
 
     <main role="main" class="container">
       <div class="starter-template">
+
         <%= yield %>
       </div>
     </main><!-- /.container -->
