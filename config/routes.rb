@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   #resources :grades
   resources :courses do
+   resources :students, only: [:index]
 #  resources :students, shallow: true
 	 resources :tests do
   	 	resources :grades 
