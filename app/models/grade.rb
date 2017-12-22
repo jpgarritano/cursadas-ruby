@@ -5,12 +5,22 @@ class Grade < ApplicationRecord
   validates :student, uniqueness: { scope: :test, message: "Una sola nota por estudiante" }  
 
 
-def approved?
+  def approved?
 	grade >= test.minimum_grade unless absent?
-end
+  end
 
-def absent?
+  def absent?
 	grade.blank?
-end
+  end
 
+
+  def studentsForNewGrade
+  	r = []
+	students = test.course.students
+	students.each do |s|
+		gr = Grade.where(student_id: s.id).where(test_id: test.id)
+		r << s if gr.blank?
+	end
+	r
+  end	
 end

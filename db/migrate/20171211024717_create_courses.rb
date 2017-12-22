@@ -4,6 +4,8 @@ class CreateCourses < ActiveRecord::Migration[5.1]
       t.integer :year
 
       t.timestamps
+
     end
+    add_index :courses, :year, unique: true
   end
 end
