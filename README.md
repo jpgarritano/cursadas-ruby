@@ -37,8 +37,6 @@ gem 'jquery-rails'
  rails test test/models/student_test.rb 
 ```
 
-* Services (job queues, cache servers, search engines, etc.)
-
 
 
 ### Sobre la aplicación web:
