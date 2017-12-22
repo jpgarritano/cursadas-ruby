@@ -20,7 +20,7 @@
     <tr>
       <th colspan="2">Nota</th>
       <th>Estudiante</th>
-      <th colspan="3">Operaciones</th>
+      <th colspan="2">Operaciones</th>
     </tr>
   </thead>
 
@@ -38,7 +38,7 @@
           <% end %>
         </td>
         <td><%= grade.student %></td>
-        <td><%= link_to 'Ver', course_test_grade_path(grade.test.course,grade.test, grade) %></td>
+      
         <td><%= link_to 'Editar', edit_course_test_grade_path(grade.test.course, grade.test,grade) %></td>
         <td><%= link_to 'Borrar',  course_test_grade_path(grade.test.course,grade.test, grade), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

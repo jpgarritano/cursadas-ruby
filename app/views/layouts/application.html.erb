@@ -22,27 +22,30 @@
           <li class="nav-item">
             <%= link_to "Cursadas", courses_path, class: 'nav-link' %>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item">
+            <%= link_to "Estudiantes", courses_path, class: 'nav-link' %>
+          </li>
+          <!--li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuración</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <%= link_to "Cursadas", courses_path, class: 'dropdown-item' %>
               <%= link_to "Estudiantes", students_path, class: 'dropdown-item' %>
               <%#= link_to "Notas", grades_path, class: 'dropdown-item' %>
             </div>
-          </li>
+          </li-->
           
           <li class="nav-item dropdown">
             <% if user_signed_in? %>
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuario</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <%= link_to 'Perfil', edit_user_registration_path, :class => 'dropdown-item' %>
               <%= link_to "Salir", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
             </div>
           <% else %>
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuario</a>
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <%= link_to "Sign up", new_user_registration_path, :class => 'dropdown-item'  %>
-            <%= link_to "Login", new_user_session_path, :class => 'dropdown-item'  %>
+            <%= link_to "Registrar", new_user_registration_path, :class => 'dropdown-item'  %>
+            <%= link_to "Acceder", new_user_session_path, :class => 'dropdown-item'  %>
           <% end %>
           </li>
         </ul>

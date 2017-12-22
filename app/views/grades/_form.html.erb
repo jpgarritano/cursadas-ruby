@@ -2,8 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :grade, label: 'Nota'  %>
-    <%= f.association :student, collection: @students , label: 'Estudiante' %>
+    <%= f.input :grade  %>
+    <%= f.association :student, collection: @students  %>
     <%= f.association :test, label: 'Evaluación' %>
   </div>
 

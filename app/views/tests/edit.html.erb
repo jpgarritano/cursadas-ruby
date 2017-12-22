@@ -1,7 +1,12 @@
-<h1>Editando Cursada:</h1>
+<div class="row justify-content-center ">
+
+<div class="col-6 bg-light">
+<h1>Editando Evaluación:</h1>
 <h2> <%= @test %></h2>
 
 <%= render 'form', test: @test %>
 
 <%= link_to 'Ver', [@test.course, @test] %> |
 <%= link_to 'Volver', course_tests_path %>
+</div>
+</div>

@@ -18,10 +18,10 @@
         <td><%= test.title %></td>
         <td><%= test.date.strftime("%d/%m/%Y") %></td>
         <td><%= test.minimum_grade %></td>
-        <td><%= link_to 'Notas', course_test_grades_path(test.course,test) %></td>
+        <td><%= link_to 'Notas', course_test_grades_path(test.course,test),class: 'btn btn-sm btn-outline-primary' %></td>
         <!--td><%= link_to 'Ver', [test.course, test] %></td-->
-        <td><%= link_to 'Editar', edit_course_test_path(test.course,test) %></td>
-        <td><%= link_to 'Borrar', [test.course,test], method: :delete, data: { confirm: '¿Estás seguro de borrar la evaluación?' } %></td>
+        <td><%= link_to 'Editar', edit_course_test_path(test.course,test),class: 'btn btn-sm btn-outline-primary' %></td>
+        <td><%= link_to 'Borrar', [test.course,test], method: :delete, data: { confirm: '¿Estás seguro de borrar la evaluación?' },class: 'btn btn-sm btn-outline-primary' %></td>
       </tr>
     <% end %>
   </tbody>

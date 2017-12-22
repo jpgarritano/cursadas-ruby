@@ -15,6 +15,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    @years = (Date.today.year - 3..Date.today.year + 3).to_a
   end
 
   # GET /courses/1/edit
@@ -28,7 +29,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to @course, notice: 'Curso creado correctamente.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+        format.html { redirect_to @course, notice: 'Curso actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }

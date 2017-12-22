@@ -32,7 +32,7 @@ class GradesController < ApplicationController
 
     respond_to do |format|
       if @grade.save
-        format.html { redirect_to course_test_grades_url(@grade.test), notice: 'Grade was successfully created.' }
+        format.html { redirect_to course_test_grades_url(@grade.test), notice: 'Nota agregada correctamente.' }
         format.json { render :show, status: :created, location: @grade }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class GradesController < ApplicationController
   def update
     respond_to do |format|
       if @grade.update(grade_params)
-        format.html { redirect_to course_test_grades_url(@grade.test), notice: 'Grade was successfully updated.' }
+        format.html { redirect_to course_test_grades_url(@grade.test), notice: 'Nota actualizada correctamente.' }
         format.json { render :show, status: :ok, location: @grade }
       else
         format.html { render :edit }

@@ -1,12 +1,15 @@
+<div class="row justify-content-center ">
+
+<div class="col-6 bg-light">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @student.name %>
 </p>
 
 <p>
-  <strong>Lastname:</strong>
+  <strong>Apellido:</strong>
   <%= @student.lastname %>
 </p>
 
@@ -21,9 +24,17 @@
 </p>
 
 <p>
-  <strong>Doc:</strong>
+  <strong>Documento:</strong>
   <%= @student.doc %>
 </p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<p>
+  <strong>Cursos:</strong>
+  <% @student.courses.each do |c| %>
+    <%= c.year %>
+  <% end %>
+</p>
+<%= link_to 'Editar', edit_student_path(@student) %> |
+<%= link_to 'Volver', students_path %>
+</div>
+</div>

@@ -22,9 +22,9 @@
         <td><%= student.email %></td>
         <td><%= student.legajo %></td>
         <td><%= student.doc %></td>
-        <td><%= link_to 'Ver', student %></td>
-        <td><%= link_to 'Editar', edit_student_path(student) %></td>
-        <td><%= link_to 'Borrar', student, method: :delete, data: { confirm: '¿Estás seguro de borrar al estudiante?' } %></td>
+        <td><%= link_to 'Ver', student, class: 'btn btn-sm btn-outline-primary' %></td>
+        <td><%= link_to 'Editar', edit_student_path(student) , class: 'btn btn-sm btn-outline-primary' %></td>
+        <td><%= link_to 'Borrar', student, method: :delete, data: { confirm: '¿Estás seguro de borrar al estudiante?' } , class: 'btn btn-sm btn-outline-primary' %></td>
       </tr>
     <% end %>
   </tbody>

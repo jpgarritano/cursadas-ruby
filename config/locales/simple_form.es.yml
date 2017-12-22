@@ -11,14 +11,26 @@ es:
     error_notification:
       default_message: "Por favor revise los errores debajo:"
     # Examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
+    labels:
+       defaults:
+         password: 'Contraseña'
+         password_confirmation: 'Repita contraseña'
+         name: 'Nombre'
+         lastname: 'Apellido'
+         doc: 'Documento'
+         courses: 'Cursos'
+         course: 'Curso'
+         student: 'Estudiante'
+         grade: 'Nota'
+         test: 'Exámen'
+         minimum_grade: 'Nota Mínima'
+         date: 'Fecha'
+         title: 'Descripción'
+       user:
+         new:
+           email: 'E-mail para iniciar sesión.'
+         edit:
+           email: 'E-mail.'
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'

@@ -5,9 +5,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title, label: "Descripción" %>
-    <%= f.input :date, label: "Fecha" %>
-    <%= f.input :minimum_grade, as: :float, label: "Nota Mínima" %>
+    <%= f.input :title %>
+    <%= f.input :date %>
+    <%= f.input :minimum_grade, as: :float %>
     <%= f.association :course, as: :hidden %>
   </div>
 
