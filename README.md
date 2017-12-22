@@ -1,6 +1,6 @@
 # README
 
-## Sistema de gestión de cursadas:
+## Aplicación web para gestión de cursadas:
   
   Desarrollado en Rails 5.1.4, Ruby 2.4.2
 
@@ -16,9 +16,7 @@ gem 'devise'
 gem 'jquery-rails'
 
 
-* System dependencies
-
-* Configuration
+Utiliza MySQL
 
 ### Para la creación de la Base de datos correr:
 
