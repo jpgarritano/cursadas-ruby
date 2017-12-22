@@ -1,24 +1,61 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Sistema de gestión de cursadas:
+  
+  Desarrollado en Rails 5.1.4, Ruby 2.4.2
 
-Things you may want to cover:
+### Gemas utilizadas
 
-* Ruby version
+* [Simple Form](https://github.com/plataformatec/simple_form)  :
+gem 'simple_form'
+* [Bootstrap](https://github.com/twbs/bootstrap-rubygem)
+gem 'bootstrap'
+* [Devise (Login)](https://github.com/plataformatec/devise)
+gem 'devise'
+* [Jquery-rails](https://github.com/rails/jquery-rails)
+gem 'jquery-rails'
+
 
 * System dependencies
 
 * Configuration
 
-* Database creation
+### Para la creación de la Base de datos correr:
 
-* Database initialization
+	
+	rails db:create
+    rails db:migrate
+	
+### Para su inicialización:
+	
+    rails db:seed
+    
 
-* How to run the test suite
+### Test de modelos
+```
+ rails test test/models/grade_test.rb 
+ rails test test/models/test_test.rb 
+ rails test test/models/course_test.rb 
+ rails test test/models/student_test.rb 
+```
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+
+### Sobre la aplicación web:
+
+
+Aplicación web para llevar registro de las notas de las
+evaluaciones​ ​ de​ ​ diferentes​ ​ cursadas​ ​ de​ ​ esta​ ​ materia.
+
+Para esto se manejan las distintas entidades:
+  Cursadas: Una por año académico. Estas contendran evaluaciones y estudiantes asociados
+
+  Evaluaciones: Se agregan a cada cursada, con titulo o descripción, fecha y una nota mínima que definira si el estudiante aprobó o no.
+  
+
+  Notas: Se crean las notas a los estudiantes de la cursada, si la nota es mayor o igual a la nota mínima figurará *aprobado*; si es menor, *desaprobado*, y si se carga con valor vacío figurará *Ausente*.
+
+  Estudiantes: Se dan de alta estudiantes, con sus respectivos datos, nombre, apellido, legajo, email y documento y se lo asocia directamente a las cursadas creadas (puede estar inscripto a mas de una cursada)
+  Se maneja directamente modificando al estudiante y seleccionando las cursadas donde se lo va a inscribir.

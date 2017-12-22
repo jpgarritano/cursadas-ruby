@@ -13,3 +13,10 @@ two:
   email: MyString
   legajo: MyString
   doc: MyString
+
+three:
+  name: MyString
+  lastname: MyString
+  email: MyString
+  legajo: MyString
+  doc: MyString
