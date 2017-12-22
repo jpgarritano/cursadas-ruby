@@ -34,8 +34,10 @@ class Test < ApplicationRecord
   	 totalGrades = Grade.where("test_id" => id).count
   	 app = approvedAmount
   	 disapp = disapprovedAmount
-  	 (100 *  approvedAmount)  / (app+disapp)
-
+     if ((app+disapp)>0)
+  	   (100 *  approvedAmount)  / (app+disapp)
+     else 0
+     end
   end
 
   def to_s

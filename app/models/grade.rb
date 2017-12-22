@@ -15,7 +15,7 @@ class Grade < ApplicationRecord
 
 
   def studentsForNewGrade
-  	r = []
+  r = []
 	students = test.course.students
 	students.each do |s|
 		gr = Grade.where(student_id: s.id).where(test_id: test.id)

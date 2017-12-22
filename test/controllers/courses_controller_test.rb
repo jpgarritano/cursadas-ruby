@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   setup do
     @course = courses(:one)
+    @course_empty = courses(:empty)
+
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -15,12 +20,13 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create course" do
-    assert_difference('Course.count') do
+  test "should not create course" do
+    assert_difference('Course.count', 0) do
       post courses_url, params: { course: { year: @course.year } }
     end
 
-    assert_redirected_to course_url(Course.last)
+    assert_response :success
+    #response?
   end
 
   test "should show course" do
@@ -38,10 +44,19 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to course_url(@course)
   end
 
+  test "should not destroy course" do
+    assert_difference('Course.count', 0) do
+      delete course_url(@course)
+  end
+
+    assert_redirected_to courses_url
+  end
+
+
   test "should destroy course" do
     assert_difference('Course.count', -1) do
-      delete course_url(@course)
-    end
+      delete course_url(@course_empty)
+  end
 
     assert_redirected_to courses_url
   end

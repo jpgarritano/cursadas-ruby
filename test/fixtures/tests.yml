@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: Test1
   date: 2017-12-17
   minimum_grade: 1.5
   course: one
 
 two:
-  title: MyString
+  title: Test2
+  date: 2017-12-17
+  minimum_grade: 1.5
+  course: two
+
+empty:
+  title: Test2
   date: 2017-12-17
   minimum_grade: 1.5
   course: two

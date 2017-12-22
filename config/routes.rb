@@ -5,13 +5,11 @@ Rails.application.routes.draw do
   #resources :grades
   resources :courses do
    resources :students, only: [:index]
-#  resources :students, shallow: true
-	 resources :tests do
+
+	 resources :tests , except: [:show] do
   	 	resources :grades 
   	 	
-  	 	#member do 
-  	 	#	get 'list_grades'
-  	 	#end
+  	 	
   	 end
   end
   resources :students
