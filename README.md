@@ -16,7 +16,7 @@ gem 'devise'
 gem 'jquery-rails'
 
 
-Utiliza MySQL
+# Utiliza MySQL Por defecto.
 
 ### Para la creación de la Base de datos correr:
 
