@@ -6,13 +6,13 @@
 
 ### Gemas utilizadas
 
-* [Simple Form](https://github.com/plataformatec/simple_form)  :
+* [Simple Form](https://github.com/plataformatec/simple_form):
 gem 'simple_form'
-* [Bootstrap](https://github.com/twbs/bootstrap-rubygem)
+* [Bootstrap](https://github.com/twbs/bootstrap-rubygem):
 gem 'bootstrap'
-* [Devise (Login)](https://github.com/plataformatec/devise)
+* [Devise (Login)](https://github.com/plataformatec/devise):
 gem 'devise'
-* [Jquery-rails](https://github.com/rails/jquery-rails)
+* [Jquery-rails](https://github.com/rails/jquery-rails):
 gem 'jquery-rails'
 
 
