@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20171220051021) do
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["year"], name: "index_courses_on_year", unique: true
   end
 
   create_table "courses_students", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

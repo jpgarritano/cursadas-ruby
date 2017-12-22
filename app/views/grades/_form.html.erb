@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <%= f.input :grade  %>
     <%= f.association :student, collection: @students  %>
-    <%= f.association :test, label: 'Evaluación' %>
+    <%= f.association :test, as: :hidden  %>
   </div>
 
   <div class="form-actions">

@@ -17,7 +17,7 @@ class GradesController < ApplicationController
   # GET /grades/new
   def new
     @grade = Grade.new(test_id: params[:test_id])
-    @students = @grade.test.course.students
+    @students = @grade.studentsForNewGrade
   end
 
   # GET /grades/1/edit
@@ -29,7 +29,7 @@ class GradesController < ApplicationController
   # POST /grades.json
   def create
     @grade = Grade.new(grade_params)
-
+    @students = @grade.studentsForNewGrade
     respond_to do |format|
       if @grade.save
         format.html { redirect_to course_test_grades_url(@grade.test), notice: 'Nota agregada correctamente.' }
@@ -60,7 +60,7 @@ class GradesController < ApplicationController
   def destroy
     @grade.destroy
     respond_to do |format|
-      format.html { redirect_to course_test_grades_url, notice: 'Grade was successfully destroyed.' }
+      format.html { redirect_to course_test_grades_url, notice: 'Nota borrada correctamente' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,7 @@ class GradesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_grade
       @grade = Grade.find(params[:id])
+      @students = @grade.studentsForNewGrade
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

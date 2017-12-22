@@ -57,9 +57,15 @@ class TestsController < ApplicationController
   # DELETE /tests/1
   # DELETE /tests/1.json
   def destroy
-    @test.destroy
+    unless (@test.grades.any?) then
+      @test.destroy
+      msj = "La evaluación #{@test} borrado correctamente"
+    else  
+      msj = "La evaluación #{@test} no se puede borrar ya que posee notas cargadas."
+    end
+    
     respond_to do |format|
-      format.html { redirect_to course_tests_url, notice: 'Test was successfully destroyed.' }
+      format.html { redirect_to course_tests_url, notice: msj }
       format.json { head :no_content }
     end
   end

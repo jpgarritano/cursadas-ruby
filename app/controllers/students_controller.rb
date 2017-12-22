@@ -5,8 +5,11 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     if (params[:course_id])
-      @students = (Course.find(params[:course_id])).students
+      @course = Course.find(params[:course_id])
+      @students = @course.students
+      @title = "Listado de estudiantes para cursada #{@course}"
     else
+      @title= "Listado de estudiantes"
       @students = Student.all
     end
   end
@@ -20,7 +23,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
-    @courses = @student.courses
+    #@courses = @student.courses
   end
 
   # GET /students/1/edit

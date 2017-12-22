@@ -39,8 +39,8 @@
         </td>
         <td><%= grade.student %></td>
       
-        <td><%= link_to 'Editar', edit_course_test_grade_path(grade.test.course, grade.test,grade) %></td>
-        <td><%= link_to 'Borrar',  course_test_grade_path(grade.test.course,grade.test, grade), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Editar', edit_course_test_grade_path(grade.test.course, grade.test,grade), class: 'btn btn-sm btn-outline-primary' %></td>
+        <td><%= link_to 'Borrar',  course_test_grade_path(grade.test.course,grade.test, grade),  class: 'btn btn-sm btn-outline-primary' , method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -15,13 +15,17 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
-    @years = (Date.today.year - 3..Date.today.year + 3).to_a
+    @years = years
   end
 
   # GET /courses/1/edit
   def edit
+    @years = years
   end
 
+  def years
+    (Date.today.year - 3..Date.today.year + 3).to_a
+  end
   # POST /courses
   # POST /courses.json
   def create
@@ -55,10 +59,15 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    @course.destroy
+    unless (@course.tests.any?) then
+      @course.destroy
+      msj = "Curso #{@course} borrado correctamente"
+    else  
+      msj = "El curso #{@course} no se puede borrar ya que posee exámenes."
+    end
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
-      format.json { head :no_content }
+        format.html { redirect_to courses_url, notice: msj }
+        format.json { head :no_content }
     end
   end
 
