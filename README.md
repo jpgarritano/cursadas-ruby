@@ -17,6 +17,7 @@ gem 'jquery-rails'
 
 
 ### Utiliza MySQL Por defecto.
+(ver configuración en config/database.yml)
 
 ### Para la creación de la Base de datos correr:
 
