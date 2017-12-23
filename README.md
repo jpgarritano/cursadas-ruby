@@ -29,12 +29,14 @@ gem 'jquery-rails'
     rails db:seed
     
 
-### Test de modelos
+### Test de modelos 
 ```
  rails test test/models/grade_test.rb 
  rails test test/models/test_test.rb 
  rails test test/models/course_test.rb 
  rails test test/models/student_test.rb 
+
+ (tambien para test/controllers/)
 ```
 
 
@@ -42,8 +44,7 @@ gem 'jquery-rails'
 ### Sobre la aplicación web:
 
 
-Aplicación web para llevar registro de las notas de las
-evaluaciones​ ​ de​ ​ diferentes​ ​ cursadas​ ​ de​ ​ esta​ ​ materia.
+Aplicación web para llevar registro de las notas de las evaluaciones​ de​ ​la materia.
 
 Para esto se manejan las distintas entidades:
   Cursadas: Una por año académico. Estas contendran evaluaciones y estudiantes asociados
