@@ -44,6 +44,9 @@ ActiveRecord::Schema.define(version: 20171220051021) do
     t.string "doc", limit: 30
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["doc"], name: "index_students_on_doc", unique: true
+    t.index ["email"], name: "index_students_on_email", unique: true
+    t.index ["legajo"], name: "index_students_on_legajo", unique: true
   end
 
   create_table "tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

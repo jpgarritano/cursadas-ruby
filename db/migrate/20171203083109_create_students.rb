@@ -9,5 +9,8 @@ class CreateStudents < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :students, :doc, unique: true
+    add_index :students, :email, unique: true
+    add_index :students, :legajo, unique: true
   end
 end
