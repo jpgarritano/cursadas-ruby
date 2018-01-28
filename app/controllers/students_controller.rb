@@ -65,12 +65,12 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
-    if @student.grades.any?
-    msj = "El alumno tiene notas cargadas"
-  else 
-    @student.destroy
-    msj = 'Estudiante borrado correctamente.'
-  end
+      begin
+      @student.destroy
+      msj = 'Estudiante borrado correctamente.'
+      rescue ActiveRecord::DeleteRestrictionError
+      msj = "El alumno #{@student} no se puede borrar ya que posee notas cargadas."
+      end
     respond_to do |format|
       format.html { redirect_to students_url, notice: msj }
       format.json { head :no_content }

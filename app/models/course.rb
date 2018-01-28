@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-	has_many :tests
+	has_many :tests, dependent: :restrict_with_exception
 	#has_many :enrolments
 	#has_many :students, through: :enrolments
 	has_and_belongs_to_many :students
@@ -7,7 +7,7 @@ class Course < ApplicationRecord
 	validates :year, uniqueness: true, numericality: true
 	#validates :students, uniqueness: true
 
-	before_destroy :check_tests
+	#before_destroy :check_tests
 
 	def check_tests
 		if (tests.any?)

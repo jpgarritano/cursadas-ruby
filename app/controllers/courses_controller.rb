@@ -59,12 +59,12 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    unless (@course.tests.any?) then
+      begin
       @course.destroy
       msj = "Curso #{@course} borrado correctamente"
-    else  
+      rescue ActiveRecord::DeleteRestrictionError
       msj = "El curso #{@course} no se puede borrar ya que posee exámenes."
-    end
+      end
     respond_to do |format|
         format.html { redirect_to courses_url, notice: msj }
         format.json { head :no_content }

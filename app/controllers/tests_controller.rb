@@ -57,11 +57,11 @@ class TestsController < ApplicationController
   # DELETE /tests/1
   # DELETE /tests/1.json
   def destroy
-    unless (@test.grades.any?) then
-      @test.destroy
-      msj = "La evaluación #{@test} borrado correctamente"
-    else  
-      msj = "La evaluación #{@test} no se puede borrar ya que posee notas cargadas."
+    begin
+    @test.destroy
+    msj = "La evaluación #{@test} se ha borrado correctamente"
+    rescue ActiveRecord::DeleteRestrictionError
+    msj = "La evaluación #{@test} no se puede borrar ya que posee notas cargadas."
     end
     
     respond_to do |format|
