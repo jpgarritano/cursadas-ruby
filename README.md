@@ -57,3 +57,14 @@ Para esto se manejan las distintas entidades:
 
   Estudiantes: Se dan de alta estudiantes, con sus respectivos datos, nombre, apellido, legajo, email y documento y se lo asocia directamente a las cursadas creadas (puede estar inscripto a mas de una cursada)
   Se maneja directamente modificando al estudiante y seleccionando las cursadas donde se lo va a inscribir.
+
+
+### Para iniciar la aplicación web:
+
+```
+rails s
+```
+
+Luego probar en navegador web, puerto por defecto: 3000
+
+http://localhost:3000

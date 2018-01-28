@@ -29,35 +29,27 @@ class Test < ApplicationRecord
   	  	Test.joins(:grades).where("id" => id).where("grade IS NULL").count
   end
 
-  def approvedPercentage
-  	 #segun Trabajo Practico el porcentaje se calcula por sobre el numero de presentes
-  	 totalGrades = Grade.where("test_id" => id).count
-  	 app = approvedAmount
-  	 disapp = disapprovedAmount
+  def genericPercentage aMount
+     #segun Trabajo Practico el porcentaje se calcula por sobre el numero de presentes
+     totalGrades = Grade.where("test_id" => id).count
+     app = approvedAmount
+     disapp = disapprovedAmount
      if ((app+disapp)>0)
-  	   (100 *  approvedAmount)  / (app+disapp)
+       (100 *  aMount)  / (app+disapp)
      else 0
      end
+
+  end
+  def approvedPercentage
+  	 genericPercentage (approvedAmount)
   end
 
   def disapprovedPercentage
-    totalGrades = Grade.where("test_id" => id).count
-     app = approvedAmount
-     disapp = disapprovedAmount
-     if ((app+disapp)>0)
-       (100 *  disapprovedAmount)  / (app+disapp)
-     else 0
-     end
+    genericPercentage (disapprovedAmount)
   end
 
   def absentPercentage
-    totalGrades = Grade.where("test_id" => id).count
-     app = approvedAmount
-     disapp = disapprovedAmount
-     if ((app+disapp)>0)
-       (100 *  absentAmount)  / (app+disapp)
-     else 0
-     end
+     genericPercentage (absentAmount)
   end
 
   def to_s
