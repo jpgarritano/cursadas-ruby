@@ -8,10 +8,10 @@
     <h4><%= @test.approvedPercentage %>% Aprobados <span class="badge badge-success"><%= @test.approvedAmount %></span></h4>
   </div>
   <div class="col">
-    <h4>Desaprobados <span class="badge badge-danger"><%= @test.disapprovedAmount %></span></h4>
+    <h4><%= @test.disapprovedPercentage %>% Desaprobados <span class="badge badge-danger"><%= @test.disapprovedAmount %></span></h4>
   </div>
   <div class="col">
-    <h4>Ausentes <span class="badge badge-secondary"><%= @test.absentAmount %></span></h4>
+    <h4><%= @test.absentPercentage %>% Ausentes <span class="badge badge-secondary"><%= @test.absentAmount %></span></h4>
   </div>
 </div>
 <div class="row">
