@@ -62,7 +62,7 @@ Para esto se manejan las distintas entidades:
 ### Para iniciar la aplicación web:
 
 ```
-rails s
+rails server
 ```
 
 Luego probar en navegador web, puerto por defecto: 3000
