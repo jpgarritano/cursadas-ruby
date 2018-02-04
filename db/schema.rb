@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20171220051021) do
   create_table "courses_students", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "course_id"
     t.bigint "student_id"
+    t.index ["course_id", "student_id"], name: "index_courses_students_on_course_id_and_student_id", unique: true
     t.index ["course_id"], name: "index_courses_students_on_course_id"
     t.index ["student_id"], name: "index_courses_students_on_student_id"
   end

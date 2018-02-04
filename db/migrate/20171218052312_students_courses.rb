@@ -5,5 +5,6 @@ class StudentsCourses < ActiveRecord::Migration[5.1]
 		t.belongs_to :student, index: true
         
 	end
+	add_index :courses_students, [:course_id,:student_id], unique: true
   end
 end
