@@ -18,6 +18,11 @@ class GradesController < ApplicationController
   def new
     @grade = Grade.new(test_id: params[:test_id])
     @students = @grade.studentsForNewGrade
+    @grades = []
+    @students.each do |s| 
+      @grades << Grade.new(test_id: params[:test_id],student_id: s.id.to_s)
+    end
+    
   end
 
   # GET /grades/1/edit
@@ -30,13 +35,17 @@ class GradesController < ApplicationController
   def create
     @grade = Grade.new(grade_params)
     @students = @grade.studentsForNewGrade
+    @grades = []
+    @students.each do |s| 
+      @grades << Grade.new(test_id: params[:test_id],student_id: s.id.to_s)
+    end
     respond_to do |format|
       if @grade.save
+        format.json { render :show, status: :created, location: course_test_grades_url(@grade.test) }
         format.html { redirect_to course_test_grades_url(@grade.test), notice: 'Nota agregada correctamente.' }
-        format.json { render :show, status: :created, location: @grade }
       else
-        format.html { render :new }
         format.json { render json: @grade.errors, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end

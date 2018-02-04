@@ -1,13 +1,21 @@
-<%= simple_form_for [@grade.test.course, @grade.test, @grade] do |f| %>
+<% @grades.each_with_index do |g, index| %>
+<%= simple_form_for [@grade.test.course, @grade.test, @grade] , remote: true, html: { class: "new_grade "} do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :grade  %>
-    <%= f.association :student, collection: @students  %>
+  	<h4><%= @students[index] %></h4>
+    <%= f.input :grade %>
+    <%= f.association :student, collection: [@students[index]], selected: @students[index].id %>
     <%= f.association :test, as: :hidden  %>
+    <%= f.button :submit ,"Guardar Nota", class: 'btn btn-success', data: { "disable-with": "Guardando..." }, id: 'student'+@students[index].id.to_s %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit ,"Aceptar", class: 'btn btn-success'%>
+    
   </div>
 <% end %>
+
+
+
+<% end %>
+
