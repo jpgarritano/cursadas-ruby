@@ -16,9 +16,9 @@
         <td><%= course.year %></td>
         <%#<td><%= link_to 'Ver', course , class: 'btn btn-outline-primary' %</td>%
         <td><%= link_to 'Editar', edit_course_path(course) , class: 'btn btn-outline-primary' %</td>%>
-        <td><%= link_to 'Borrar', course, method: :delete, data: { confirm: '¿Estás seguro de borrar el curso?' } , class: 'btn btn-outline-primary'  %></td>
         <td><%= link_to 'Evaluaciones', course_tests_path(course), method: :get , class: 'btn btn-outline-primary' %></td>
         <td><%= link_to 'Inscriptos', course_students_path(course), method: :get , class: 'btn btn-outline-primary' %></td>
+        <td><%= link_to 'Borrar', course, method: :delete, data: { confirm: '¿Estás seguro de borrar el curso?' } , class: 'btn btn-outline-primary'  %></td>
 
       </tr>
     <% end %>

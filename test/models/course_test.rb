@@ -18,8 +18,10 @@ class CourseTest < ActiveSupport::TestCase
   	course = Course.new
   	course.year = Date.today.year
   	course.tests << tests(:one)
-  	course.destroy
-  	assert_not course.destroyed?
+    assert_raises (ActiveRecord::DeleteRestrictionError) do
+  	   course.destroy
+    end
+  	#assert_not course.destroyed?
   end
 
   

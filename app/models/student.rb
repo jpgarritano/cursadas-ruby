@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-	has_and_belongs_to_many :courses
+	has_and_belongs_to_many :courses, -> { distinct }
 	#accepts_nested_attributes_for :courses
 	has_many :grades, dependent: :restrict_with_exception
 	

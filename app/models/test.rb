@@ -31,11 +31,13 @@ class Test < ApplicationRecord
 
   def genericPercentage aMount
      #segun Trabajo Practico el porcentaje se calcula por sobre el numero de presentes
+     #En la correccion quedo marcado que el porcentaje tambien debe contemplar a los ausentes
      totalGrades = Grade.where("test_id" => id).count
      app = approvedAmount
      disapp = disapprovedAmount
+     abs = absentAmount
      if ((app+disapp)>0)
-       (100 *  aMount)  / (app+disapp)
+       (100 *  aMount)  / (app+disapp+abs)
      else 0
      end
 

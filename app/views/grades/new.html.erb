@@ -7,10 +7,10 @@
 </div>
 </div>
 <% else %>
-<h3> No tiene alumnos para cargar notas</h3>
+<h3> No tiene alumnos para cargar notas o ya están cargadas</h3>
 <% end %>
 
-<%= link_to 'Volver', course_test_grades_path %>
+<%= link_to 'Volver', course_test_grades_path ,class: 'btn btn-outline-primary'%>
 
 
 
