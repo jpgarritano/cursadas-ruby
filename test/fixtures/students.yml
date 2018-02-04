@@ -1,22 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  lastname: MyString
-  email: MyString
-  legajo: MyString
-  doc: MyString
+  name: MyString1
+  lastname: MyString1
+  email: MyString1
+  legajo: MyString1
+  doc: MyString1
 
 two:
-  name: MyString
-  lastname: MyString
-  email: MyString
-  legajo: MyString
-  doc: MyString
+  name: MyString2
+  lastname: MyString2
+  email: MyString2
+  legajo: MyString2
+  doc: MyString2
 
 three:
-  name: MyString
-  lastname: MyString
-  email: MyString
-  legajo: MyString
-  doc: MyString
+  name: MyString3
+  lastname: MyString3
+  email: MyString3
+  legajo: MyString3
+  doc: MyString3
