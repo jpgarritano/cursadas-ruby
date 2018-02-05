@@ -8,7 +8,7 @@ class Test < ApplicationRecord
   validates :course, presence: true
   
 
-  #before_destroy :check_grades
+  
 
   def check_grades
     if (grades.any?)

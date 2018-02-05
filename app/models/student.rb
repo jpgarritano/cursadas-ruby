@@ -9,17 +9,14 @@ class Student < ApplicationRecord
 	validates :legajo, length: {in: 1..30 } , uniqueness: true
 	validates :doc, length: {in: 1..30 } , uniqueness: true
 
-	#before_destroy :checks
-
-	def checks
-		if (grades.any?)
-			throw :abort
-		end
-	end
 
 
 	def to_s
     	"#{name} #{lastname} (#{legajo})".titleize
+	end
+
+	def allGrades
+		Grade.joins(:test).all.where(student_id: self.id).order("date")
 	end
 
 end

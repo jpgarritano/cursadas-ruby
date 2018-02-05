@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   #resources :grades
   resources :courses do
+   member do
+      get 'general'
+   end
    resources :students, only: [:index]
 
 	 resources :tests , except: [:show] do
