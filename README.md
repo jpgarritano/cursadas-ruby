@@ -29,6 +29,9 @@ gem 'jquery-rails'
 	
     rails db:seed
     
+    Se creará un usuario administrador: 
+      usuario: admin@ruby.com
+      clave: 123456
 
 ### Test de modelos 
 ```

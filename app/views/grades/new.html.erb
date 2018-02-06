@@ -1,38 +1,10 @@
-<% if (@grades.length > 0) %>
 <div class="row justify-content-center ">
+
 <div class="col-6 bg-light">
-<h1>Cargar Notas para <%= @grade.test %></h1>
+<h1>Cargar Nota para <%= @grade.test %></h1>
 
 <%= render 'form', grade: @grade %>
+
+<%= link_to 'Volver', course_test_grades_path %>
 </div>
 </div>
-<% else %>
-<h3> No tiene alumnos para cargar notas o ya están cargadas</h3>
-<% end %>
-
-<%= link_to 'Volver', course_test_grades_path ,class: 'btn btn-outline-primary'%>
-
-
-
-<script type="text/javascript">
-(function() {
-  $(document).ready(function() {
-    return $(".new_grade").on("ajax:success", function(event) {
-      var data, ref, status, xhr;
-      ref = event.detail, data = ref[0], status = ref[1], xhr = ref[2];
-      var $this = $(this);
-      $this.find('input[type="submit"]').addClass("disabled");
-      $(this).find(".alert-success").remove();
-      return $(this).append("<p class=\"alert alert-success\">Nota Cargada</p>");
-    }).on("ajax:error", function(event) {
-      $(this).find(".alert-danger").remove();
-      $(this).append("<p class=\"alert alert-danger\">ERROR: " + event.detail[0].student[0] + "</p>");
-      return $("this input[type=submit]").prop({
-        "disabled": true
-      });
-    });
-  });
-
-}).call(this);
-
-</script>

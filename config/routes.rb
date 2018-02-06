@@ -10,6 +10,9 @@ Rails.application.routes.draw do
    resources :students, only: [:index]
 
 	 resources :tests , except: [:show] do
+      member do
+        get 'add_grades'
+      end
   	 	resources :grades 
   	 	
   	 	

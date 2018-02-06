@@ -1,64 +1,62 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Cursada <%= @course %></h1>
-<ul class="list-group">
-<li class="list-group-item list-group-item-dark">
-<div class="row">
-    <div class="col">Evaluación</div>
-    <div class="col">Fecha</div>
-    <div class="col">Aprobados</div>
-    <div class="col">Desaprobados</div>
-    <div class="col">Ausentes</div>
-  </div>
-</li>
-<% @tests.each do |test| %>
-<li class="list-group-item ">
-  <div class="row">
-  <div class="col"><%= test %></div>
-  <div class="col"><%= l test.date, format: :default %></div>
-  <div class="col">
-    <span class="badge badge-secondary"><%= test.approvedPercentage %>% </span> <span class="badge badge-success"><%= test.approvedAmount %> total</span>
-  </div>
-  <div class="col">
-    <span class="badge badge-secondary"><%= test.disapprovedPercentage %>% </span> <span class="badge badge-danger"><%= test.disapprovedAmount %> total </span>
-  </div>
-  <div class="col">
-    <span class="badge badge-secondary"><%= test.absentPercentage %>% </span> <span class="badge badge-secondary"><%= test.absentAmount %> total </span>
-  </div>
-</div>
-</li>
-<% end %>
 
-</ul>
-<hr>
-<% @students.each do |student| %>
-<%= student %>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Evaluación</th>
-      <th colspan="2">Nota</th>
-      
+      <th>Estudiante</th>
+      <% @tests.each do |t| %>
+        <th><%= t %></th>
+      <% end %>
     </tr>
   </thead>
 
   <tbody>
-      <% student.allGrades.each do |grade| %>
+    <% @students.each do |s| %>
       <tr>
-        <td><%= grade.test %></td>
-        <td><%= grade.grade %></td>
-       <td><% if (grade.approved?) %>
+        <td><%= s %></td>
+        <% s.allGrades.each do |g| %>
+        <td><%= g.grade %> 
+          <% if (g.approved?) %>
             <span class="text-success">Aprobado</span>
-          <% elsif (grade.absent?) %>
+          <% elsif (g.absent?) %>
            <span class="text-secondary">Ausente</span>
            <% else %> 
            <span class="text-danger">Desaprobado</span>
           <% end %>
         </td>
+        <% end %>
       </tr>
-      <% end %>
+     <% end %> 
 
+        <tr class="table-success"> 
+          <td>Aprobados</td>
+      <% @tests.each do |t| %>
+          <td><span class="badge badge-secondary"><%= t.approvedPercentage %>% </span> <span class="badge badge-success"><%= t.approvedAmount %> total</span>
+          </td>
+      <% end %>
+      </tr>
+      <tr  class="table-danger"> 
+      <td>Desaprobados</td>
+      <% @tests.each do |t| %>
+        <td>
+        <span class="badge badge-secondary"><%= t.disapprovedPercentage %>% </span> <span class="badge badge-danger"><%= t.disapprovedAmount %> total </span>
+        </td>
+         <% end %>
+       </tr>
+        <tr  class="table-secondary">
+          <td>Ausentes</td>
+        <% @tests.each do |t| %>
+
+        <td><span class="badge badge-secondary"><%= t.absentPercentage %>% </span> <span class="badge badge-secondary"><%= t.absentAmount %> total </span>
+        </td>
+                 <% end %>
+
+     </tr>
+      
   </tbody>
 </table>
-<% end %>
+
 

@@ -30,4 +30,4 @@ t4 = Test.create(title:"evaluacion 2 #{course2.year}", date: Date.today, minimum
  end 
 end
 
-
+User.create(email: "admin@ruby.com", password: "123456")

@@ -16,7 +16,7 @@ class Student < ApplicationRecord
 	end
 
 	def allGrades
-		Grade.joins(:test).all.where(student_id: self.id).order("date")
+		Grade.joins(:test).all.where(student_id: self.id).order("tests.date, tests.id")
 	end
 
 end
