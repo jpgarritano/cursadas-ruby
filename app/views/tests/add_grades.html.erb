@@ -1,0 +1,74 @@
+<%#=<div class="row justify-content-center ">
+
+<div class="col-6 bg-light">
+<h1>Cargar notas de Evaluación</h1>
+
+<%= simple_form_for [@test.course,@test] do |t| %#>
+      <%= t.simple_fields_for :grades do |g| %#>
+        <%= g.input :grade, label: g.object.student %#>
+        <%= g.input :student_id, as: :hidden %#>
+      <% end %#>
+      <%= t.submit "Cargar notas", class: 'btn btn-success' %#>
+<% end %#>
+
+<%= link_to 'Volver', course_tests_path %#>
+</div>
+</div>
+%>
+<p id="notice"><%= notice %></p>
+
+<h1>Notas "<%= @test %>"</h1>
+
+
+<div class="row">
+  <div class="col">
+    <h4><%= @test.approvedPercentage %>% Aprobados <span class="badge badge-success"><%= @test.approvedAmount %></span></h4>
+  </div>
+  <div class="col">
+    <h4><%= @test.disapprovedPercentage %>% Desaprobados <span class="badge badge-danger"><%= @test.disapprovedAmount %></span></h4>
+  </div>
+  <div class="col">
+    <h4><%= @test.absentPercentage %>% Ausentes <span class="badge badge-secondary"><%= @test.absentAmount %></span></h4>
+  </div>
+</div>
+
+  <%= simple_form_for [@test.course,@test] do |t| %>
+<ul class="list-group">
+ <li class="list-group-item list-group-item-dark">
+  <div class="row">
+    <div class="col-3">Nota</div>
+    <div class="col-5">Estudiante</div>
+    <div class="col-4">Nota</div>
+  </div>
+  </li>
+     <%= t.simple_fields_for :grades do |g| %>
+<li class="list-group-item ">
+ <div class="row">
+  <div class="col-3"><%= g.object.grade %>
+  <% if (g.object.approved?) %><span class="text-success">Aprobado</span>
+  <% elsif (g.object.absent?) %>
+  <span class="text-secondary">Ausente</span>
+  <% else %> 
+  <span class="text-danger">Desaprobado</span>
+  <% end %>
+  </div>
+  <div class="col-5"><%= g.object.student %></div>
+  <div class="col-4">
+           <%= g.input :grade , label: false %>
+           <%= g.input :student_id, as: :hidden %>
+  </div>
+  
+</li>
+    <% end %>
+<li class="list-group-item ">
+    <div class="row">
+    <div class="col"></div>
+    <div class="col"><%= t.submit "Cargar notas", class: 'btn btn-success' %></div>
+    <div class="col"><%= link_to 'Volver', course_tests_path(@test.course) , class: 'btn btn-primary' %></div>
+    <div class="col"></div>
+  </div>
+</li>
+<% end %>
+
+
+<%#= link_to 'Cargar Notas', new_course_test_grade_path , class: 'btn btn-primary' %>
