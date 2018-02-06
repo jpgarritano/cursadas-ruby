@@ -15,15 +15,11 @@ class GradesController < ApplicationController
   end
 
   # GET /grades/new
-  def new
+ def new
     @grade = Grade.new(test_id: params[:test_id])
     @students = @grade.studentsForNewGrade
-    @grades = []
-    @students.each do |s| 
-      @grades << Grade.new(test_id: params[:test_id],student_id: s.id.to_s)
-    end
-    
   end
+
 
   # GET /grades/1/edit
   def edit
@@ -33,12 +29,8 @@ class GradesController < ApplicationController
   # POST /grades
   # POST /grades.json
   def create
-    @grade = Grade.new(grade_params)
-    @students = @grade.studentsForNewGrade
-    @grades = []
-    @students.each do |s| 
-      @grades << Grade.new(test_id: params[:test_id],student_id: s.id.to_s)
-    end
+     @grade = Grade.new(grade_params)
+     @students = @grade.studentsForNewGrade
     respond_to do |format|
       if @grade.save
         format.json { render :show, status: :created, location: course_test_grades_url(@grade.test) }
@@ -67,9 +59,10 @@ class GradesController < ApplicationController
   # DELETE /grades/1
   # DELETE /grades/1.json
   def destroy
+    test = @grade.test
     @grade.destroy
     respond_to do |format|
-      format.html { redirect_to course_test_grades_url, notice: 'Nota borrada correctamente' }
+      format.html { redirect_to add_grades_course_test_url(test.course,test), notice: 'Nota borrada correctamente' }
       format.json { head :no_content }
     end
   end

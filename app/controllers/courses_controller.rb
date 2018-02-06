@@ -73,7 +73,14 @@ class CoursesController < ApplicationController
 
   def general
     @students = @course.students
-    @tests = @course.tests
+    @tests = @course.tests.order(:date, :id)
+    @students.each do |s|
+      @tests.each do |t|
+          #Si la nota es null o no existe, se contabiliza como ausente
+          g = Grade.where(test_id: t.id, student_id: s.id).empty?
+          s.grades << Grade.new(test_id: t.id, student_id: s.id)
+      end
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.

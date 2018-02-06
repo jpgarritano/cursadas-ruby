@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: [:show, :edit, :update, :destroy]
+  before_action :set_test, only: [:show, :edit, :update, :destroy, :add_grades]
 
   # GET /tests
   # GET /tests.json
@@ -20,6 +20,14 @@ class TestsController < ApplicationController
     #@test.course = Course.find()
   end
 
+  def add_grades
+    @students = @test.studentsForNewGrade
+    @students.each  do |s|
+      @test.grades.build(student_id: s.id)
+  end
+
+    
+  end
   # GET /tests/1/edit
   def edit
   end
@@ -70,9 +78,7 @@ class TestsController < ApplicationController
     end
   end
  
-  def list_grades
-    @test.grades
-  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_test
@@ -81,6 +87,8 @@ class TestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_params
-      params.require(:test).permit(:title, :date, :minimum_grade, :course_id)
+      params.require(:test).permit(:title, :date, :minimum_grade, :course_id,
+        grades_attributes:[:id, :grade, :student_id]
+        )
     end
 end
