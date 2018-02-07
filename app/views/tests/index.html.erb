@@ -21,7 +21,7 @@
         <td><%= link_to 'Notas', add_grades_course_test_path(test.course,test),class: 'btn btn-sm btn-outline-primary' %></td>
         <!--td><%= link_to 'Ver', [test.course, test] %></td-->
         <td><%= link_to 'Editar', edit_course_test_path(test.course,test),class: 'btn btn-sm btn-outline-primary' %></td>
-        <td><%= link_to 'Borrar', [test.course,test], method: :delete, data: { confirm: '¿Estás seguro de borrar la evaluación?' },class: 'btn btn-sm btn-outline-primary' %></td>
+        <td><%= link_to 'Borrar', [test.course,test], method: :delete, data: { confirm: '¿Estás seguro de borrar la evaluación? Tambien se borrarán las notas cargadas' },class: 'btn btn-sm btn-outline-primary' %></td>
       </tr>
     <% end %>
   </tbody>

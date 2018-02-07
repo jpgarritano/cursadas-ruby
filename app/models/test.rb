@@ -1,6 +1,6 @@
 class Test < ApplicationRecord
   belongs_to :course
-  has_many :grades ,dependent: :restrict_with_exception
+  has_many :grades ,dependent: :destroy
   accepts_nested_attributes_for :grades
 
   validates :minimum_grade, presence: true

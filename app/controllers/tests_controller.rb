@@ -69,7 +69,7 @@ class TestsController < ApplicationController
     @test.destroy
     msj = "La evaluación #{@test} se ha borrado correctamente"
     rescue ActiveRecord::DeleteRestrictionError
-    msj = "La evaluación #{@test} no se puede borrar ya que posee notas cargadas."
+    msj = "La evaluación #{@test} no se puede borrar."
     end
     
     respond_to do |format|
