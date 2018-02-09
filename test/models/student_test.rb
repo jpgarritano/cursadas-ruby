@@ -29,4 +29,15 @@ class StudentTest < ActiveSupport::TestCase
     	assert g.approved?
     end
  end
+
+ test "el estudiante desaprueba"  do
+  @student.courses.push(@course1)
+  t = Test.new(minimum_grade: 10.0, title: "titulo", date: Date.today)
+  t.course = @course1
+  grade =  Grade.new(grade:9, student: @student, test: @test)
+  t.grades << grade
+  @student.grades do |g|
+    assert g.disapproved?
+  end
+ end
 end
