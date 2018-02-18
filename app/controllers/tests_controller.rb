@@ -52,6 +52,19 @@ class TestsController < ApplicationController
   # PATCH/PUT /tests/1.json
   def update
     respond_to do |format|
+      
+      students = @test.course.students
+      st = students.collect do |s|
+        s.id.to_s
+      end
+
+      params[:test][:grades_attributes].each do |g, v|
+          if (!st.include? v[:student_id])
+            s = Student.find(v[:student_id])
+            format.html { redirect_to course_tests_url(@test.course), notice: "No se cargaron la notas ya que el estudiante #{s.name} no está inscripto" }
+          end
+      end
+
       if @test.update(test_params)
         format.html { redirect_to course_tests_url(@test.course), notice: "Evaluación #{@test} actualizada correctamente." }
         format.json { render :show, status: :ok, location: @test }
