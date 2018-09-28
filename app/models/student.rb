@@ -19,4 +19,8 @@ class Student < ApplicationRecord
 		Grade.joins(:test).all.where(student_id: self.id).order("tests.date, tests.id")
 	end
 
+	def allGradesFromGrade course
+		allGrades.select do | g | g.test.course == course end
+	end
+
 end
