@@ -17,7 +17,7 @@
     <% @students.each do |s| %>
       <tr>
         <td><%= s %></td>
-        <% s.allGrades.each do |g| %>
+        <% s.allGradesFromCourse(@course).each do |g| %>
         <td><%= g.grade %> 
           <% if (g.approved?) %>
             <span class="text-success">Aprobado</span>
